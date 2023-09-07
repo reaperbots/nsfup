@@ -41,15 +41,15 @@ PAGE_NO = 1
 STATUS_LIMIT = 4
 
 class MirrorStatus:
-    STATUS_UPLOADING = "Uploading"
-    STATUS_DOWNLOADING = "Downloading"
-    STATUS_CLONING = "Cloning"
+    STATUS_UPLOADING = "📥 Uploading"
+    STATUS_DOWNLOADING = "📤 Downloading"
+    STATUS_CLONING = "♻️Cloning"
     STATUS_QUEUEDL = "DL queued"
     STATUS_QUEUEUP = "UL queued"
     STATUS_PAUSED = "Paused"
-    STATUS_ARCHIVING = "Archiving"
-    STATUS_EXTRACTING = "Extracting"
-    STATUS_SPLITTING = "Splitting"
+    STATUS_ARCHIVING = "🔐Archiving"
+    STATUS_EXTRACTING = "🔐Extracting"
+    STATUS_SPLITTING = "✂️Splitting"
     STATUS_CHECKING = "CheckUp"
     STATUS_SEEDING = "Seeding"
 
@@ -145,15 +145,15 @@ def get_progress_bar_string(pct):
         pct = float(pct.strip('%'))
     p = min(max(pct, 0), 100)
     cFull = int(p // 10)
-    p_str = '●' * cFull
-    p_str += '○' * (10 - cFull)
+    p_str = '▰' * cFull
+    p_str += '▱' * (10 - cFull)
     return p_str
     
 def source(self):
     return (sender_chat.title if (sender_chat := self.message.sender_chat) else self.message.from_user.username or self.message.from_user.id)
 
 def get_readable_message():
-    msg = '<b>Powered by Aeon</b>\n\n'
+    msg = '<b>⚡Powered By: <a href="https://telegram.me/Moviezpure">Moviezpure </a></b>\n <b>😎Owned By: <a href="https://telegram.me/Luffyy_474">Luffy</a></b>\n\n'
     button = None
     tasks = len(download_dict)
     currentTime = get_readable_time(time() - botStartTime)
@@ -212,7 +212,7 @@ def get_readable_message():
     msg += f"\n<b>• Bot uptime</b>: {currentTime}"
     msg += f"\n<b>• Free disk space</b>: {get_readable_file_size(disk_usage('/usr/src/app/downloads/').free)}"
     msg += f"\n<b>• Uploading speed</b>: {get_readable_file_size(up_speed)}/s"
-    msg += f"\n<b>• Downloading speed</b>: {get_readable_file_size(dl_speed)}/s"
+    msg += f"\n<b> Downloading speed</b>: {get_readable_file_size(dl_speed)}/s"
     return msg, button
 
 
