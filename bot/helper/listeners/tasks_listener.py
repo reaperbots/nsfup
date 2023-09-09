@@ -482,10 +482,10 @@ class MirrorLeechListener:
                 await start_from_queued()
                 return
         else:
-            msg += f'<b>• Type: </b>{mime_type}\n'
+            msg += f'<b>⚙️ Type: </b>{mime_type}\n'
             if mime_type == "Folder":
-                msg += f'<b>• SubFolders: </b>{folders}\n'
-                msg += f'<b>• Files: </b>{files}\n'
+                msg += f'<b>🗂️ SubFolders: </b>{folders}\n'
+                msg += f'<b>📁 Files: </b>{files}\n'
             if link or rclonePath and config_dict['RCLONE_SERVE_URL']:
 
                 if link:
