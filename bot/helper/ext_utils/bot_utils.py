@@ -153,7 +153,7 @@ def source(self):
     return (sender_chat.title if (sender_chat := self.message.sender_chat) else self.message.from_user.username or self.message.from_user.id)
 
 def get_readable_message():
-    msg = '<b>⚡Powered By: <a href="https://telegram.me/Reaperzclub">Reaperzclub</a></b>\n'
+    msg = '<b>⚡Powered By: <a href="https://telegram.me/Reaperzclub">Reaperzclub</a></b>\n\n'
     button = None
     tasks = len(download_dict)
     currentTime = get_readable_time(time() - botStartTime)
@@ -210,9 +210,9 @@ def get_readable_message():
         button = buttons.build_menu(3)
     msg += f"<b>Tasks</b>: {tasks}{bmax_task}"
     msg += f"\n<b>UPTM</b>: {currentTime}"
-    msg += f"<b>Downloading speed</b>: {get_readable_file_size(dl_speed)}/s"
+    msg += f"<b> DL</b>: {get_readable_file_size(dl_speed)}/s"
     msg += f"\n<b>Free </b>: {get_readable_file_size(disk_usage('/usr/src/app/downloads/').free)}"
-    msg += f"<b>Uploading speed</b>: {get_readable_file_size(up_speed)}/s"
+    msg += f"<b> UL</b>: {get_readable_file_size(up_speed)}/s"
     
     return msg, button
 
