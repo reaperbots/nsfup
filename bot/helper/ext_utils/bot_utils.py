@@ -210,9 +210,9 @@ def get_readable_message():
         button = buttons.build_menu(3)
     msg += f"<b>Tasks</b>: {tasks}{bmax_task}"
     msg += f"\n<b>UPTM</b>: {currentTime}"
-    msg += f"<b>DL</b>: {get_readable_file_size(dl_speed)}/s"
+    msg += f"<b> | DL</b>: {get_readable_file_size(dl_speed)}/s"
     msg += f"\n<b>Free</b>: {get_readable_file_size(disk_usage('/usr/src/app/downloads/').free)}"
-    msg += f"<b>/sUL</b>: {get_readable_file_size(up_speed)}/s"
+    msg += f"<b> | UL</b>: {get_readable_file_size(up_speed)}/s"
     
     return msg, button
 
