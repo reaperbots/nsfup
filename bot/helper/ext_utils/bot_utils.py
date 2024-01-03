@@ -166,30 +166,30 @@ def get_readable_message():
         globals()['STATUS_START'] = STATUS_LIMIT * (PAGES - 1)
         globals()['PAGE_NO'] = PAGES
     for download in list(download_dict.values())[STATUS_START:STATUS_LIMIT+STATUS_START]:
-        msg += f"📂 {escape(f'{download.name()}')}\n"
-        msg += f"\n<b>{download.status()}...</b>"
+        msg += f"┌📂 {escape(f'{download.name()}')}\n"
+        msg += f"\n├<b>{download.status()}...</b>"
         if download.status() not in [MirrorStatus.STATUS_SPLITTING, MirrorStatus.STATUS_SEEDING]:
             msg += f"\n{get_progress_bar_string(download.progress())} {download.progress()}"
-            msg += f"\n⛓️Progress: {download.processed_bytes()} of {download.size()}"
-            msg += f"\n🚀Speed: {download.speed()}"
-            msg += f"\n👤User: {source(download)}"
-            msg += f'\n⏳Estimated: {download.eta()}'
+            msg += f"\n├Progress: {download.processed_bytes()} of {download.size()}"
+            msg += f"\n├Speed: {download.speed()}"
+            msg += f"\n├User: {source(download)}"
+            msg += f'\n├Estimated: {download.eta()}'
             if hasattr(download, 'seeders_num'):
                 try:
-                    msg += f"\n🐌Seeders: {download.seeders_num()} | 🌱Leechers: {download.leechers_num()}"
+                    msg += f"\n├🐌Seeders: {download.seeders_num()} | 🌱Leechers: {download.leechers_num()}"
                 except:
                     pass
         elif download.status() == MirrorStatus.STATUS_SEEDING:
-            msg += f"\nSize: {download.size()}"
-            msg += f"\nSpeed: {download.upload_speed()}"
-            msg += f"\nUploaded: {download.uploaded_bytes()}"
-            msg += f"\nRatio: {download.ratio()}"
-            msg += f"\nTime: {download.seeding_time()}"
+            msg += f"\n├Size: {download.size()}"
+            msg += f"\n├Speed: {download.upload_speed()}"
+            msg += f"\n├Uploaded: {download.uploaded_bytes()}"
+            msg += f"\n├Ratio: {download.ratio()}"
+            msg += f"\n├Time: {download.seeding_time()}"
         else:
-            msg += f"\n🗄️Size: {download.size()}"
-        msg += f"\n🕦Elapsed: {get_readable_time(time() - download.message.date.timestamp())}"
-        msg += f"\n🔁Mode: {download.upload_details['mode']}"
-        msg += f"\n❌Abort: /{BotCommands.CancelMirror}_{download.gid()[:8]}\n\n"
+            msg += f"\n├Size: {download.size()}"
+        msg += f"\n├Elapsed: {get_readable_time(time() - download.message.date.timestamp())}"
+        msg += f"\n├Mode: {download.upload_details['mode']}"
+        msg += f"\n└❌Abort: /{BotCommands.CancelMirror}_{download.gid()[:8]}\n\n"
     if len(msg) == 0:
         return None, None
     dl_speed = 0
